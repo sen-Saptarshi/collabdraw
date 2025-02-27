@@ -8,7 +8,7 @@ export function middleware(req: Request, res: Response, next: NextFunction) {
     userId?: string;
   };
   if (decoded) {
-    req.userId = decoded.userId!;
+    (req as any).userId = decoded.userId!;
   } else {
     res.status(403).json({
       message: "Unauthorized",
